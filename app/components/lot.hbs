@@ -1,0 +1,14 @@
+<div class="col">
+  <div class="card h-100">
+    <img src="/images/designerlamp.jpg" class="card-img-top" alt="No image yet"/>
+    <div class="card-body">
+      <h5 class="card-title">{{@lot.subject}}</h5>
+      <p class="card-text">{{@lot.description}}</p>
+    </div>
+    <div class="card-footer text-end">
+      <LinkTo @route="auctions.auctiondetails.lot" @model={{@lot.id}} class="btn btn-primary stretched-link">
+        Details <i class="bi-arrow-right-short"></i>
+      </LinkTo>
+    </div>
+  </div>
+</div>

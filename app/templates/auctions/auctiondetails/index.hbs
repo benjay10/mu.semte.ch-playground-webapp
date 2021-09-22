@@ -1,0 +1,91 @@
+{{page-title "Auctiondetails"}}
+
+<h1 class="">{{@model.subject}}</h1>
+
+<!-- Intro, image and details -->
+
+<div class="clearfix">
+  <img class="col-12 col-md-6 float-md-end mb-3 ms-md-3" src="/images/auctionstock.webp" alt="No image yet" />
+  <p>
+    {{@model.description}}
+  </p>
+  <div class="accordion col-md-5" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Details
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+        <div class="accordion-body p-0">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="fw-bold">Start date</span>
+              <span class="float-end text-end">{{@model.niceStartdate}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">End date</span>
+              <span class="float-end text-end">{{@model.niceEnddate}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Take away address</span>
+              <span class="float-end text-end">{{{@model.niceTakeawayaddress}}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Take away date</span>
+              <span class="float-end text-end">{{@model.niceTakeawaydate}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Visit date</span>
+              <span class="float-end text-end">{{@model.niceVisitdate}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Organising company</span>
+              <span class="float-end text-end">
+                <a href="#id{{@model.organisingcompany.id}}" data-bs-toggle="offcanvas">{{@model.organisingcompany.name}}</a>
+              </span>
+            </li>
+            {{#if @model.sellingcompany}}
+              <li class="list-group-item">
+                <span class="fw-bold">Selling company</span>
+                <span class="float-end text-end">
+                  <a href="#id{{@model.sellingcompany.id}}" data-bs-toggle="offcanvas">{{@model.sellingcompany.name}}</a>
+                </span>
+              </li>
+            {{/if}}
+            {{#if @model.sellingparticipant}}
+              <li class="list-group-item">
+                <span class="fw-bold">Seller</span>
+                <span class="float-end text-end">{{@model.sellingparticipant.fullname}}</span>
+              </li>
+            {{/if}}
+            <li class="list-group-item">
+              <span class="fw-bold">Reason for auctioning</span>
+              <span class="float-end text-end">{{@model.reason.reasonString}}<br />{{@model.reason.comment}}</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Categories</span>
+              {{!#each this.allbreadcrumbs as |crumbs|}}
+                <span class="float-end text-end">{{@model.fullCategory}}</span>
+              {{!/each}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lots -->
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-1">
+  {{#each @model.lots as |lot|}}
+    <Lot @lot={{lot}} />
+  {{/each}}
+</div>
+
+<!-- Company details -->
+
+<Company @companyid="id{{@model.organisingcompany.id}}" @company={{@model.organisingcompany}} />
+<Company @companyid="id{{@model.sellingcompany.id}}"    @company={{@model.sellingcompany}} />
+

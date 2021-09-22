@@ -1,0 +1,38 @@
+{{yield}}
+
+
+<div class="row justify-content-center mt-5">
+  <div class="card col-sm-6">
+    <div class="card-body">
+      <h1 class="text-center mb-5">Login</h1>
+
+      {{#if this.hasErrorMessage}}
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" aria-label="Warning:"> </i>
+          <div>
+            {{this.errorMessage}}
+          </div>
+        </div>
+      {{/if}}
+
+      <form {{on "submit" this.login}}>
+        <div class="input-group mb-4">
+          <span class="input-group-text" id="usernameinput"><i class="bi bi-person"></i></span>
+          <Input class="form-control form-control-lg" @type="text" @value={{this.nickname}} placeholder="Username" aria-label="Username" aria-describedby="usernameinput" />
+        </div>
+        <div class="input-group mb-4">
+          <span class="input-group-text" id="passwordinput"><i class="bi bi-hash"></i></span>
+          <Input class="form-control form-control-lg" @type="text" @value={{this.password}} placeholder="Password" aria-label="Password" aria-describedby="passwordinput" />
+        </div>
+        <div class="text-center mt-5">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+        {{#if this.isAuthenticating}}
+          <div class="text-center mt-3">
+            <span class="">Authenticating...</span>
+          </div>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</div>

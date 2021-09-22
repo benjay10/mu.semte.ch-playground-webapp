@@ -1,0 +1,70 @@
+<div class="card h-100">
+  <div class="card-header">
+    {{#if this.isLoggedIn}}
+      <div class="float-end" {{did-insert this.checkFavorite}}>
+        {{#if this.isFavorite}}
+          {{! Remove as favorite }}
+          <button type="button" class="btn btn-danger"
+            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Remove as favorite"
+            {{did-insert this.insertedTooltip}}
+            {{will-destroy this.destroyTooltip}}
+            {{on "click" this.unmarkFavorite}}>
+            <i class="bi-star-fill"></i>
+          </button>
+        {{else}}
+          {{! Mark as favorite }}
+          <button type="button" class="btn btn-primary"
+            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mark as favorite"
+            {{did-insert this.insertedTooltip}}
+            {{will-destroy this.destroyTooltip}}
+            {{on "click" this.markFavorite}}>
+            <i class="bi-star"></i>
+          </button>
+        {{/if}}
+      </div>
+    {{/if}}
+    <h4 class="m-1">Bid on it!</h4>
+  </div>
+  <div class="card-body p-0">
+    <div class="p-3 pb-1">
+      <h5 class="card-title fw-bold mb-3">
+        <span class="float-end" style="font-variant-numeric: tabular-nums;"
+              {{did-insert   this.startCountDown}}
+              {{will-destroy this.stopCountDown}}>
+          {{this.timeleft}}
+        </span>
+        Lot closes in:
+      </h5>
+      <div class="d-grid mb-3">
+        {{#if this.isLoggedIn}}
+          <button type="button" class="btn btn-danger"
+            {{on "click" (fn makeBid @model)}}>
+            Place Bid (+ {{@model.niceStepamount}})
+          </button>
+        {{else}}
+          <button class="btn btn-warning" type="button" disabled="disabled">Log in to place a bid</button>
+        {{/if}}
+      </div>
+      <p class="card-text m-0 mb-2 fw-bold">Last bids:</p>
+    </div>
+
+    <ul class="list-group list-group-flush overflow-auto" style="max-height: 10em;"
+        {{did-insert this.makeSortedBids}}>
+      {{#each this.sortedBids as |bid|}}
+        <li class="list-group-item">
+          <span class="float-end">{{bid.niceTimestamp}}</span>
+          {{bid.niceAmount}}
+        </li>
+      {{/each}}
+    </ul>
+
+  </div>
+  <div class="card-footer">
+    <a tabindex="0" role="button" class="btn btn-light"
+       data-bs-toggle="popover" data-bs-trigger="focus" title="Explanation" data-bs-content="{{@model.classinfo.comment}}"
+       {{did-insert this.insertedPopover}}>
+      {{@model.classinfo.label}} &nbsp;<i class="bi-info-circle"></i>
+    </a>
+  </div>
+</div>
+

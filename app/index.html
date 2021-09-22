@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>AuctionWebApp</title>
+    <meta name="description" content="Auction webapp" />
+    <meta name="author"      contant="Ben Behaeghe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {{content-for "head"}}
+
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css" />
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/auction-web-app.css" />
+    <!-- Including the Bootstrap CSS -->
+    <link rel="stylesheet" href="{{rootURL}}bootstrap-5.1.0-dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="{{rootURL}}bootstrap-5.1.0-dist/css/bootstrap.rtl.min.css"> -->
+    <!-- Including the Bootstrap CSS for icon font -->
+    <link rel="stylesheet" href="{{rootURL}}bootstrap-icons-1.5.0/bootstrap-icons.css">
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/auction-web-app.js"></script>
+    <!-- Including Bootstrap Javascript -->
+    <script src="{{rootURL}}bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+
+    {{content-for "body-footer"}}
+  </body>
+</html>

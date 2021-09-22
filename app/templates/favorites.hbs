@@ -1,0 +1,25 @@
+{{page-title "Favorites"}}
+<div class="container">
+  <h1>Favorites</h1>
+
+  {{#each @model.favorites as |favoritelot|}}
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-sm-4">
+          <img src="/images/designerlamp.jpg" class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="Placeholder image for a lot" />
+        </div>
+        <div class="col-sm-8">
+          <div class="card-body">
+            <h5 class="card-title">{{favoritelot.subject}}</h5>
+            <p class="card-text">{{favoritelot.description}}</p>
+            <div class="text-end">
+              <LinkTo @route="auctions.auctiondetails.lot" @models={{array favoritelot.auction.id favoritelot.id}} class="btn btn-primary stretched-link">
+                Details <i class="bi-arrow-right-short"></i>
+              </LinkTo>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

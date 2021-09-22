@@ -1,0 +1,14 @@
+<div class="col">
+  <div class="card h-100">
+    <img src="/images/auctionstock.webp" class="card-img-top" alt="No image yet"/>
+    <div class="card-body">
+      <h5 class="card-title">{{@auction.subject}}</h5>
+      <p class="card-text">{{@auction.description}}</p>
+    </div>
+    <div class="card-footer text-end">
+      <LinkTo @route="auctions.auctiondetails" @model={{@auction.id}} class="btn btn-primary stretched-link">
+        Details &amp; lots <i class="bi-arrow-right-short"></i>
+      </LinkTo>
+    </div>
+  </div>
+</div>

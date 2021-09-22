@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-danger mb-3">
+  <div class="container-fluid">
+    <LinkTo @route="index" class="navbar-brand"><i class="bi bi-shop"></i> RP Auctions</LinkTo>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-sm-0">
+        <li class="nav-item">
+          <LinkTo @route="auctions" class="nav-link"><i class="bi bi-flower3"></i> Auctions</LinkTo>
+        </li>
+        <li class="nav-item">
+          <LinkTo @route="favorites" class="nav-link"><i class="bi bi-star"></i> Favorites</LinkTo>
+        </li>
+        <li class="nav-item">
+          <LinkTo @route="login" class="nav-link"><i class="bi bi-door-open"></i> Login</LinkTo>
+        </li>
+        <li class="nav-item">
+          <LinkTo @route="logout" class="nav-link"><i class="bi bi-door-open"></i> Logout</LinkTo>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
